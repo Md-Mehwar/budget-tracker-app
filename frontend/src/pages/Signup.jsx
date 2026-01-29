@@ -1,7 +1,7 @@
 function Signup() {
   return (
     <div>
-      <h2>Signup</h2>
+      <h1>Signup</h1>
 
       <form>
         <input type="text" placeholder="Name" />
