@@ -1,20 +1,13 @@
 from sqlalchemy import create_engine
-from sqlalchemy.orm import sessionmaker, declarative_base
+from sqlalchemy.ext.declarative import declarative_base
+from sqlalchemy.orm import sessionmaker
 
-# Database credentials
-DB_USER = "budget_user"
-DB_PASSWORD = "mehwar123"
-DB_HOST = "localhost"
-DB_NAME = "budget_tracker"
+DATABASE_URL = "sqlite:///./app.db"
 
-# Create Database URL
-DATABASE_URL = f"mysql+pymysql://{DB_USER}:{DB_PASSWORD}@{DB_HOST}/{DB_NAME}"
+engine = create_engine(
+    DATABASE_URL, connect_args={"check_same_thread": False}
+)
 
-# Create SQLAlchemy Engine
-engine = create_engine(DATABASE_URL)
-
-# Create Session Local
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 
-# Create Base class for models
 Base = declarative_base()
